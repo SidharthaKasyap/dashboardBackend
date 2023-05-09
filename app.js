@@ -31,7 +31,7 @@ app.use("/api/v1", user);
 app.use("/api/v1", project);
 app.use("/api/v1", taskList);
 
-// Middleware for Errors
-app.use(errorMiddleware);
+// // Middleware for Errors
+// app.use(errorMiddleware);
 
 module.exports = app;
