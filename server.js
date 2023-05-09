@@ -35,3 +35,5 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+// MONGO_URI = "mongodb://localhost:27017/Dashboard"

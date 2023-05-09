@@ -1,7 +1,6 @@
 const TaskList = require("../models/tasklistModel.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const ErrorHandler = require("../utils/errorhandler");
-const projectModel = require("../models/projectModel.js");
+// const ErrorHandler = require("../utils/errorhandler");
 const ApiFeatures2 = require("../utils/apiFeatures2.js");
 
 //create tasklist
