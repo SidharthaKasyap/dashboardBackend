@@ -35,7 +35,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
-   sendToken(user, 200, res);
+  sendToken(user, 200, res);
 });
 
 // Login User
@@ -45,19 +45,24 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   // checking if user has given password and email both
 
   if (!email || !password) {
-    return next(new ErrorHandler("Please Enter Email & Password", 400));
+    return res.status(400).json({ success: false, message: "required" });
   }
 
   const user = await User.findOne({ email }).select("+password");
-
+console.log("a");
   if (!user) {
-    return next(new ErrorHandler("Invalid email or password", 401));
+    return res
+      .status(400)
+      .json({ success: false, message: "user doesnt exists" });
   }
+  console.log("b");
 
   const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid email or password", 401));
+    return res
+      .status(400)
+      .json({ success: false, message: "wrong credentials" });
   }
 
   sendToken(user, 200, res);
